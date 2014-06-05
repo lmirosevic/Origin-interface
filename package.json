@@ -1,0 +1,26 @@
+{
+	"name": "origin-interface",
+	"description": "Service interface component for the Origin service.",
+	"author" : "Luka Mirosevic <luka@goonbee.com>",
+	"version": "1.0.0",
+	"private": false,
+	"main": "client.js",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/lmirosevic/origin-service-interface.git"
+	},
+	"dependencies": {
+		"gb-toolbox": "1.x",
+		"underscore": "1.6.x",
+		"coffee-resque": "0.1.x"
+	},
+	"devDependencies": {
+		"nodemon": "1.0.x",
+		"memwatch": "0.2.x"
+	},
+	"engines": {
+		"node": "0.10.x",
+		"npm": "1.4.x"
+	},
+	"license": "Apache, Version 2.0"
+}
