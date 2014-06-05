@@ -8,11 +8,19 @@
 
 var nconf = require('nconf'),
     coffeeResque = require('coffee-resque'),
-    url = require('url');
+    url = require('url'),
+    _ = require('underscore'),
+    toolbox = require('gb-toolbox');
 
-/* Main code */
+nconf.argv()
+     .env()
+     .file({file: './config/defaults.json'});
+
+/* Main */
 
 var Client = function() {
+  var resque;
+
   this.connect = function(redisURL) {
     var parsedUrl = url.parse(redisURL);
     var connectionOptions = {};
@@ -21,7 +29,7 @@ var Client = function() {
     if (!_.isNull(parsedUrl.auth)) connectionOptions.password = parsedUrl.auth.split(':')[1];
     if (!_.isNull(parsedUrl.pathname)) connectionOptions.database = parsedUrl.pathname.split('/')[1];
     console.log('Attempting connection to Redis for Origin interface...');
-    var resque = coffeeResque.connect(connectionOptions);
+    resque = coffeeResque.connect(connectionOptions);
     resque.redis.on('error', function(err) {
         console.error('Error occured on Origin interface Redis', err);
     });
@@ -34,16 +42,16 @@ var Client = function() {
   };
 
   this.set = function(channel, value, callback) {
-    toolbox.requiredArguments(channel, value, callback);
+    toolbox.requiredArguments(channel, value);
 
-    // convert the input into a message object that the origin service expects
-    var message = {
+    // convert the input into a update object that the origin service expects
+    var update = {
       channel: channel,
       value: value
     };
-    
+
     // send the state update off
-    resque.enqueue(options.queue, 'OriginUpdateJob', message, function(err, remainingJobs) {
+    resque.enqueue(nconf.get('QUEUE'), 'OriginUpdateJob', [update], function(err, remainingJobs) {
       toolbox.callCallback(callback, err);
     });
   };

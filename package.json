@@ -12,7 +12,8 @@
 	"dependencies": {
 		"gb-toolbox": "1.x",
 		"underscore": "1.6.x",
-		"coffee-resque": "0.1.x"
+		"coffee-resque": "0.1.x",
+		"nconf": "0.6.x"
 	},
 	"devDependencies": {
 		"nodemon": "1.0.x",
