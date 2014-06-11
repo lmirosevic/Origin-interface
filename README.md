@@ -4,8 +4,8 @@ Client library to Goonbee's simple push service for push delivery. This is the c
 
 This is the service interface, so your back end services can talk to Origin and publish updates to all subscribers.
 
-[Node.js Service Interface](https://github.com/lmirosevic/Origin-service-interface)
-[Node.js Service](https://github.com/lmirosevic/Origin-service)
+[Node.js Service Interface](https://github.com/lmirosevic/Origin-service-interface)  
+[Node.js Service](https://github.com/lmirosevic/Origin-service)  
 [Objective-C Client](https://github.com/lmirosevic/Origin-client)
 
 Copyright & License
