@@ -9,12 +9,14 @@
 var nconf = require('nconf'),
     coffeeResque = require('coffee-resque'),
     url = require('url'),
+    path = require('path'),
     _ = require('underscore'),
     toolbox = require('gb-toolbox');
 
 nconf.argv()
      .env()
-     .file({file: './config/defaults.json'});
+     .file({file: path.join(__dirname, './config/defaults.json')});
+
 
 /* Main */
 
