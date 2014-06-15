@@ -2,7 +2,7 @@
 	"name": "origin-interface",
 	"description": "Service interface component for the Origin service.",
 	"author" : "Luka Mirosevic <luka@goonbee.com>",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"private": false,
 	"main": "client.js",
 	"repository": {
