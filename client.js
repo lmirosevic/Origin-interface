@@ -6,17 +6,12 @@
 //  Copyright (c) 2014 Goonbee. All rights reserved.
 //
 
-var nconf = require('nconf'),
+var nconf = require('./lib/config'),
     coffeeResque = require('coffee-resque'),
     url = require('url'),
     path = require('path'),
     _ = require('underscore'),
     toolbox = require('gb-toolbox');
-
-nconf.argv()
-     .env()
-     .file({file: path.join(__dirname, './config/defaults.json')});
-
 
 /* Main */
 
@@ -38,7 +33,7 @@ var Client = function() {
     resque.redis.on('reconnecting', function(err) {
       console.log('Attempting reconnection to Redis for Origin interface...');
     });
-    resque.redis.retry_max_delay = 1000;
+    resque.redis.retry_max_delay = nconf.get('MAX_RECONNECTION_TIMEOUT');
 
     return resque.redis;
   };

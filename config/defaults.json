@@ -1,3 +1,4 @@
 {
-	"QUEUE": "origin.serviceInterface"
+	"QUEUE": "origin.serviceInterface",
+	"MAX_RECONNECTION_TIMEOUT": 1000
 }
