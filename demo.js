@@ -1,12 +1,12 @@
 var origin = require('./client');
 
 // Connect to redis resque
-origin.connect('redis://localhost:6379/4');
+origin.connect('redis://localhost:6379/');
 
 // Update a channel, which will result in an update to all subscribers if the value is different
-origin.set('wcsg.score.crovsbra', {
-  teamA: 4,
-  teamB: 1
+origin.set('wcsg.score.match_26', {
+  teamA: 1,
+  teamB: 4
 });
 
 console.log('Sent');
